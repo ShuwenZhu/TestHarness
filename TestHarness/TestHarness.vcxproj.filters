@@ -18,5 +18,16 @@
     <ClCompile Include="TestHarness.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DivideTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DivideTest.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Templates.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
