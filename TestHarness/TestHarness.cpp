@@ -2,40 +2,39 @@
 //
 
 #include <iostream>
-#include<functional>
-
 #include "..\TestCase\IntegerTest.cpp"
 
-class TestHarness {
-	bool lastTest;
-public:
-	TestHarness();
-	bool execObj(std::function<void(void)> obj);
-};
-
-bool TestHarness::execObj(std::function<void(void)> obj) {
+template <class CallObj>
+bool execObj(CallObj& obj) {
 	try {
 		obj();
 	}
-	catch (int e) {
-		std::cout << "Caught Exception: " << e << "\n";
+	catch (const char* msg) {
+		std::cout << "\tCaught Exception: " << msg << "\n";
 		return false;
 	}
 	return true;
 }
 
 
-TestHarness::TestHarness() {
-	lastTest = false;
-}
 
 int main() {
     std::cout << "Hello World!\n"; 
-	TestHarness myHarness();
-	IntegerTest myTest(5);
-	std::cout << "Calling IntegerTest...\n";
-	bool result = myHarness.execObj(myTest);
-	std::cout << "Result:" << result << "\n";
+	IntegerTest myTest(0);
+	bool result;
+
+	std::cout << "================================================\n";
+	std::cout << "Calling IntegerTest with type 0...\n";
+	result = execObj(myTest);
+	std::cout << "\tResult: --" << result << "--\n";
+	std::cout << "================================================\n";
+
+	myTest.setValue(5);
+	std::cout << "================================================\n";
+	std::cout << "Calling IntegerTest with type 5...\n";
+	result = execObj(myTest);
+	std::cout << "\tResult: --" << result << "--\n";
+	std::cout << "================================================\n";
 	system("pause");
 
 	return 0;
