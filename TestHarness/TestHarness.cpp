@@ -2,14 +2,48 @@
 //
 
 #include <iostream>
+#include<functional>
 
-int main()
-{
+#include "..\TestCase\IntegerTest.cpp"
+
+class TestHarness {
+	bool lastTest;
+public:
+	TestHarness();
+	bool execObj(std::function<void(void)> obj);
+};
+
+bool TestHarness::execObj(std::function<void(void)> obj) {
+	try {
+		obj();
+	}
+	catch (int e) {
+		std::cout << "Caught Exception: " << e << "\n";
+		return false;
+	}
+	return true;
+}
+
+
+TestHarness::TestHarness() {
+	lastTest = false;
+}
+
+int main() {
     std::cout << "Hello World!\n"; 
+	TestHarness myHarness();
+	IntegerTest myTest(5);
+	std::cout << "Calling IntegerTest...\n";
+	bool result = myHarness.execObj(myTest);
+	std::cout << "Result:" << result << "\n";
 	system("pause");
 
 	return 0;
 }
+
+
+
+// Project help
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
