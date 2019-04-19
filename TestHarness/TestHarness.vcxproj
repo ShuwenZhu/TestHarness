@@ -151,7 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DivideTest.cpp" />
     <ClCompile Include="TestHarness.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DivideTest.h" />
+    <ClInclude Include="Templates.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
