@@ -14,4 +14,3 @@ public:
 };
 
 #endif // !_DIVIDETEST_H_
-
