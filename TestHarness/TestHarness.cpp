@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <cstdarg>
+#include <initializer_list>
 #include "DivideTest.h"
 #include "TestHarness.h"
 
@@ -23,6 +25,18 @@ bool TestHarness::execObj(CallObj& obj) {
 	return true;
 }
 
+
+template <class CallObj>
+bool TestHarness::execObjs(std::initializer_list<CallObj> objs) {
+	bool result = true;
+	for (auto elem : objs) {
+		if (!this->execObj(elem)) {
+			result = false;
+		}
+	}
+	return result;
+}
+
 // Constructor
 TestHarness::TestHarness(int level) {
 	logLevel = level;
@@ -35,11 +49,20 @@ int main() {
 	TestHarness harness(0);
 	DivideTest myTest(0);
 
-	for (int i = 0; i < TESTNUM; i++)
-	{
+	for (int i = 0; i < TESTNUM; i++) {
 		myTest.setValue(i);
 		testCallableObj(harness, myTest);
 	}
+
+	DivideTest t1(1);
+	DivideTest t2(2);
+	DivideTest t3(3);
+	DivideTest t4(0);
+	std::cout << "Now calling with multiple object calls:\n";
+	std::cout << "================================================\n";
+	harness.execObjs({ t1, t2, t3, t4 });
+	std::cout << "================================================\n";
+	std::cout << "Done!\n";
 	return 0;
 }
 
