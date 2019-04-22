@@ -23,6 +23,6 @@ void DivideTest::operator() () {
 	}
 	else
 	{
-		std::cout << "The quotient is: " << dividend / divisor << std::endl;
+		std::cout << "Done, the quotient is: " << dividend / divisor << std::endl;
 	}
 }
