@@ -19,7 +19,7 @@ Please follow the [stack overflow guide here to fix](https://stackoverflow.com/q
 These files are our main harness, and currently the entry point into the code. Test harness defines several methods:
 
 Name | Access | Signature | Description
---- | --- | ---
+--- | --- | --- | ---
 TestHarness | Public | TestHarness() | Default constructor. Sets the loglevel to 0.
 TestHarness | Public | TestHarness(int level) | Constructor to set the loglevel to `level`
 testCallableObj | Public | bool testCallableObjs(CallObj& obj) | Takes a Callable object, and passes it into execObj. Returns pass/fail.
@@ -33,7 +33,7 @@ currentDateTime | Private | const std::string currentDateTime() | Returns the cu
 These files help us create exceptions by causing divide by zero exceptions, or functioning as expected.
 
 Name |  Access |Signature | Description
---- | --- | ---
+--- | --- | --- | ---
 DivideTest | Public | DivideTest(int a); | Our constructor. Sets the divisor.
 setValue | Public | void setValue(int x); | Sets the number to be divided by.
 getValue | Public | int  getValue(); | Returns the current number.
