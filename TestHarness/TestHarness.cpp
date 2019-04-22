@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <cstdarg>
 #include <initializer_list>
+#include <functional>
 #include "DivideTest.h"
 #include "TestHarness.h"
 
@@ -25,7 +26,7 @@ bool TestHarness::testCallableObj(CallObj& Objpointer) {
 	{
 		std::cout << "================================================\n";
 		std::cout << "[" << currentDateTime() << "] ";
-		std::cout << "Calling DivideTest with divisor value = " << Objpointer.getValue() << "...\n";
+		std::cout << "Calling object passed into testCallableObj\n";
 	}
 	bool result = execObj(Objpointer);
 	//std::cout << "\tResult: --" << result << "--\n";
@@ -68,6 +69,12 @@ int main() {
 		myTest.setValue(i);
 		harness.testCallableObj(myTest);
 	}
+	
+	// Show Lamdas work as well
+	std::function<int(void)> f1 = []() { return 1; };
+	std::function<int(void)> f2 = []() { throw "Oh no! My lamda threw an exception!";  return 2; };
+	harness.testCallableObj(f1);
+	harness.testCallableObj(f2);
 
 	DivideTest t1(1);
 	DivideTest t2(2);
@@ -75,5 +82,7 @@ int main() {
 	DivideTest t4(0);
 	harness.testCallableObjs({ t1, t2, t3, t4 });
 
+	// Now call on both lamdas!
+	harness.testCallableObjs({ f1, f2 });
 	return 0;
 }
