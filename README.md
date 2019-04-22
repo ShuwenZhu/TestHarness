@@ -4,6 +4,13 @@
 ## Authors
 Shuwen Zhu, Kevin Wren
 
+# How to Run
+Using the git plugin in Visual Studio, pull the project down.
+
+Then Build & Run the project!
+
+## localtime and CRT Errors
+Please follow the [stack overflow guide here to fix](https://stackoverflow.com/questions/22450423/how-to-use-crt-secure-no-warnings?rq=1)
 
 ## File Description
 
@@ -11,7 +18,7 @@ Shuwen Zhu, Kevin Wren
 
 These files are our main harness, and currently the entry point into the code. Test harness defines several methods:
 
-Name | Signature | Description
+Name | Access | Signature | Description
 --- | --- | ---
 TestHarness | Public | TestHarness() | Default constructor. Sets the loglevel to 0.
 TestHarness | Public | TestHarness(int level) | Constructor to set the loglevel to `level`
@@ -25,7 +32,7 @@ currentDateTime | Private | const std::string currentDateTime() | Returns the cu
 
 These files help us create exceptions by causing divide by zero exceptions, or functioning as expected.
 
-Name | Signature | Description
+Name |  Access |Signature | Description
 --- | --- | ---
 DivideTest | Public | DivideTest(int a); | Our constructor. Sets the divisor.
 setValue | Public | void setValue(int x); | Sets the number to be divided by.
@@ -56,12 +63,3 @@ Your Single-User Test Harness:
         * detailed debugging output that includes, on failure, values of application specific variables, and an optional time-date stamp
     6. Shall provide a sequence of tests demonstrating all the features of your TestHarness.
 
-
-# How to Run
-
-Using the git plugin, pull the project down.
-
-Then Build & Run the project!
-
-## localtime and CRT Errors
-Please follow the [stack overflow guide here to fix](https://stackoverflow.com/questions/22450423/how-to-use-crt-secure-no-warnings?rq=1)
